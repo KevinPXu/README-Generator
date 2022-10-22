@@ -1,6 +1,5 @@
 var inquirer = require("inquirer");
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+//function that returns a license badge based on which license is passed in
 function renderLicenseBadge(license) {
   let badge;
   switch (license) {
@@ -27,8 +26,7 @@ function renderLicenseBadge(license) {
   return badge;
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
+//Creates a function that returns the license link
 function renderLicenseLink(license) {
   let link;
   if (!license) {
@@ -58,8 +56,7 @@ function renderLicenseLink(license) {
   }
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+//function that returns the license section of README to generateMarkdown function
 function renderLicenseSection(license) {
   if (!license) {
     return "";
@@ -69,7 +66,7 @@ function renderLicenseSection(license) {
   )}, please click the link`;
 }
 
-// TODO: Create a function to generate markdown for README
+// function to generate markdown for README while calling several above functions to display license badges and license link
 function generateMarkdown(data) {
   return `# ${data.title}
   ${renderLicenseBadge(data.license)}
@@ -82,7 +79,6 @@ function generateMarkdown(data) {
   
   * [Installation](#installation)
   * [Usage](#usage)
-  * [Credits](#credits)
   * [License](#license)
   
   ## Installation
@@ -93,21 +89,21 @@ function generateMarkdown(data) {
 
   ${data.whatUseFor}
 
-  ## Credits
-  
-  ## Badges
-  
   ## License
   ${renderLicenseSection(data.license)}
-  ## Features
-  
+
   ## Contributing
   ${data.contributors}
 
   ## Tests
   ${data.tests}
     
+  ### Questions
+  To ask additional questions send me an email at ${
+    data.email
+  } or for additional information https://github.com/${data.username}.
 `;
 }
 
+//exports the function generateMarkdown to index.js
 module.exports = generateMarkdown;
